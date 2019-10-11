@@ -16,5 +16,4 @@ public class RecruitmentServiceApplication extends SpringBootServletInitializer 
     public static void main(String args[]){
         SpringApplication.run(RecruitmentServiceApplication.class,args);
     }
-
 }
