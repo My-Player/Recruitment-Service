@@ -36,5 +36,4 @@ public class RecruitmentController {
             return new ResponseEntity(recruitmentService.getAllRecruitment(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }
