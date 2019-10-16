@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Description goes here.
@@ -49,5 +50,10 @@ public class UsersDataController {
                         .build());
     }
 
+    @GetMapping(value = "/getAll")
+    public ResponseEntity getAllUsersData(){
+        List<UsersData> usersDataList = usersDataService.getAllUsersData();
+        return ResponseEntity.ok(usersDataList);
+    }
 
 }

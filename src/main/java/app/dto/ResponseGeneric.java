@@ -70,7 +70,7 @@ public class ResponseGeneric implements Serializable {
         private Date timestamp;
         private int httpStatus;
         private String path;
-        private transient Object detail;
+        private Object detail;
 
         public Builder() {
         }
