@@ -2,15 +2,13 @@ package app.controller;
 
 import app.dto.ResponseGeneric;
 import app.dto.UsersDataDto;
-import app.model.User;
+import app.en.ENUM_STATUS_CODE;
+import app.model.UsersData;
 import app.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static app.constant.StatusConstant.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -24,7 +22,7 @@ import java.util.List;
  * @since 15/10/2019
  */
 @RestController
-@RequestMapping(value = "/v1")
+@RequestMapping(value = "/user-data")
 public class UsersDataController {
 
     private final UsersDataService usersDataService;
@@ -37,25 +35,25 @@ public class UsersDataController {
         this.httpServletRequest = httpServletRequest;
     }
 
-    @PostMapping(value = "/user-data/save")
+    @PostMapping(value = "/save")
     public ResponseEntity saveUsersData(@RequestBody UsersDataDto usersData){
 
-        User userData = usersDataService.convertToUsersData(usersData);
+        UsersData userData = usersDataService.convertToUsersData(usersData);
         usersDataService.save(userData);
 
         return ResponseEntity.ok(
                 new ResponseGeneric.Builder()
                         .withHttpStatus(HttpStatus.OK.value())
                         .withPath(httpServletRequest.getRequestURI())
-                        .withDetail(SUCCESS.getMessage())
+                        .withDetail(ENUM_STATUS_CODE.SUCCESS.name())
                         .withTimestamp(new Date())
                         .build());
     }
 
-    @GetMapping(value = "/users-data/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getAll")
     public ResponseEntity getAllUsersData(){
-        List<User> userList = usersDataService.getAllUsersData();
-        return ResponseEntity.ok(userList);
+        List<UsersData> usersDataList = usersDataService.getAllUsersData();
+        return ResponseEntity.ok(usersDataList);
     }
 
 }

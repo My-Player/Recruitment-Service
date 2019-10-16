@@ -1,4 +1,9 @@
-package app.dto;
+package app.model;
+
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Description goes here.
@@ -7,26 +12,36 @@ package app.dto;
  * @version 0.1
  * @since 15/10/2019
  */
-public class UsersDataDto {
 
+@Entity
+@Table(name = "USERS_DATA")
+@DynamicUpdate
+public class UsersData implements Serializable {
 
-    private String userId;
+    @Column
+    @Id
+    private String id;
+
+    @Column
     private String userName;
+
+    @Column
     private String userRating;
-    private String clubName;
+
+    @Column
     private String userEmail;
+
+    @Column
     private String userPhoneNumber;
+
+    @Column
     private String userAddress;
+
+    @Column
     private String gender;
+
+    @Column
     private int age;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getGender() {
         return gender;
@@ -44,6 +59,14 @@ public class UsersDataDto {
         this.age = age;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -58,14 +81,6 @@ public class UsersDataDto {
 
     public void setUserRating(String userRating) {
         this.userRating = userRating;
-    }
-
-    public String getClubName() {
-        return clubName;
-    }
-
-    public void setClubName(String clubName) {
-        this.clubName = clubName;
     }
 
     public String getUserEmail() {

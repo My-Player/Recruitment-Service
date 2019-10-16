@@ -16,31 +16,26 @@ import java.util.List;
 @Table(name = "RECRUITMENT_DATA")
 public class Recruitment implements Serializable {
 
-    @Column(name = "RECRUITMENT_ID")
+    @Column
     @Id
     private String recruitmentId;
 
-    @Column(name = "RECRUITMENT_DESCRIPTION")
-    @OneToMany(mappedBy ="id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<User> applicationList;
+    @Column
+    @OneToMany(mappedBy ="id",fetch = FetchType.LAZY)
+    private List<UsersData> applicationList;
 
     @Column
     private String description;
 
-    @Column(name = "TITLE")
-    private String title;
-
-
-
-    @Column(name = "RECRUITMENT_CREATED_DATE")
+    @Column
     private Date createdDate;
 
-    @Column(name = "RECRUITMENT_PROVINCE")
+    @Column
     private String province;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "club")
-    private Club club;
+    //club many to one
+
+    //logo
 
 
     public String getRecruitmentId() {
@@ -51,11 +46,11 @@ public class Recruitment implements Serializable {
         this.recruitmentId = recruitmentId;
     }
 
-    public List<User> getApplicationList() {
+    public List<UsersData> getApplicationList() {
         return applicationList;
     }
 
-    public void setApplicationList(List<User> applicationList) {
+    public void setApplicationList(List<UsersData> applicationList) {
         this.applicationList = applicationList;
     }
 
@@ -81,21 +76,5 @@ public class Recruitment implements Serializable {
 
     public void setProvince(String province) {
         this.province = province;
-    }
-
-    public Club getClub() {
-        return club;
-    }
-
-    public void setClub(Club club) {
-        this.club = club;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 }

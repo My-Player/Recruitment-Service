@@ -3,8 +3,6 @@ package app.service;
 import app.dto.RecruitmentDto;
 import app.model.Recruitment;
 
-import java.util.List;
-
 /**
  * Description goes here.
  *
@@ -13,9 +11,6 @@ import java.util.List;
  * @since 15/10/2019
  */
 public interface RecruitmentService {
-    Recruitment saveRecruitment(RecruitmentDto recruitmentDto);
-    List<Recruitment> getAllRecruitment();
-
-
-
+    Recruitment saveRecruitment(Recruitment recruitment);
+    Recruitment convertToRecruitment(RecruitmentDto recruitmentDto);
 }
