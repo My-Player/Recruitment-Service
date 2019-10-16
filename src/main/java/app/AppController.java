@@ -18,4 +18,5 @@ public class AppController {
         return new ResponseEntity(buildProperties.getVersion(), HttpStatus.OK);
     }
 
+
 }
