@@ -7,6 +7,8 @@ import app.service.RecruitmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Description goes here.
  *
@@ -34,5 +36,11 @@ public class RecruitmentServiceImpl implements RecruitmentService {
     @Override
     public Recruitment convertToRecruitment(RecruitmentDto recruitmentDto) {
         return null;
+    }
+
+    @Override
+    public List<Recruitment> getAllRecruitment() {
+        List<Recruitment> getAllRecruitment = recruitmentRepository.getAllRecruitment();
+        return getAllRecruitment;
     }
 }

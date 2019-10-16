@@ -1,7 +1,19 @@
 package app.controller;
 
+import app.dto.RecruitmentDto;
+import app.service.RecruitmentService;
+import app.service.UsersDataService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 /**
  * Description goes here.
  *
@@ -10,7 +22,21 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 15/10/2019
  */
 @RestController
-@RequestMapping(value = "/recruitment")
+@RequestMapping(value = "/v1")
 public class RecruitmentController {
+
+    @Autowired
+    RecruitmentService recruitmentService;
+
+    @GetMapping(path = "/recruitment", produces = MediaType.APPLICATION_JSON_VALUE)
+
+
+    public ResponseEntity<RecruitmentDto> getAllRecruitment(){
+        try {
+            return new ResponseEntity(recruitmentService.getAllRecruitment(), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity(recruitmentService.getAllRecruitment(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
