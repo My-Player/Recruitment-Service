@@ -19,13 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/v1")
 public class RecruitmentController {
-
     @Autowired
     RecruitmentService recruitmentService;
 
     @GetMapping(path = "/recruitment", produces = MediaType.APPLICATION_JSON_VALUE)
-
-
     public ResponseEntity<RecruitmentDto> getAllRecruitment(){
         try {
             return new ResponseEntity(recruitmentService.getAllRecruitment(), HttpStatus.OK);
