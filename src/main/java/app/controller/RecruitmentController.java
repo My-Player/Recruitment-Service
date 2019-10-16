@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.dto.ErrorResponse;
 import app.dto.RecruitmentDto;
 import app.service.RecruitmentService;
 import org.apache.log4j.LogManager;
@@ -33,7 +34,7 @@ public class RecruitmentController {
         try {
             return new ResponseEntity(recruitmentService.getAllRecruitment(), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity(recruitmentService.getAllRecruitment(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(new ErrorResponse(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
