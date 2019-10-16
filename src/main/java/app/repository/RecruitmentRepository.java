@@ -1,6 +1,6 @@
 package app.repository;
 
-import app.model.UsersData;
+import app.model.Recruitment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,11 +8,9 @@ import org.springframework.stereotype.Repository;
  * Description goes here.
  *
  * @author patrick.kwan
- * @version 0.1
  * @since 15/10/2019
  */
-
 @Repository
-public interface UsersDataRepository extends JpaRepository<UsersData, String> {
-    UsersData findById(String id);
+public interface RecruitmentRepository extends JpaRepository<Recruitment, String> {
+    Recruitment findByRecruitmentId(String id);
 }

@@ -2,10 +2,7 @@ package app.model;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -43,6 +40,9 @@ public class UsersData implements Serializable {
     @Column
     private String gender;
 
+    @Column
+    private int age;
+
     public String getGender() {
         return gender;
     }
@@ -58,9 +58,6 @@ public class UsersData implements Serializable {
     public void setAge(int age) {
         this.age = age;
     }
-
-    @Column
-    private int age;
 
     public String getId() {
         return id;

@@ -4,9 +4,10 @@ import app.dto.UsersDataDto;
 import app.model.UsersData;
 import app.repository.UsersDataRepository;
 import app.service.UsersDataService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Description goes here.
@@ -42,6 +43,11 @@ public class UsersDataServiceImpl implements UsersDataService {
         usersData.setGender(usersDataDto.getGender());
         usersData.setAge(usersDataDto.getAge());
         return usersData;
+    }
+
+    @Override
+    public List<UsersData> getAllUsersData() {
+        return userDataRepository.findAll();
     }
 
 }
