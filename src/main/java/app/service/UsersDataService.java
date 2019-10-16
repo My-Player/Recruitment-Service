@@ -3,6 +3,8 @@ package app.service;
 import app.dto.UsersDataDto;
 import app.model.UsersData;
 
+import java.util.List;
+
 /**
  * Description goes here.
  *
@@ -14,4 +16,5 @@ public interface UsersDataService {
 
     UsersData save(UsersData usersData);
     UsersData convertToUsersData(UsersDataDto usersDataDto);
+    List<UsersData> getAllUsersData();
 }
