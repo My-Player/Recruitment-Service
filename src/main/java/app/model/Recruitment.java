@@ -21,7 +21,7 @@ public class Recruitment implements Serializable {
     private String recruitmentId;
 
     @Column
-    @OneToMany(mappedBy ="id",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy ="id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UsersData> applicationList;
 
     @Column
