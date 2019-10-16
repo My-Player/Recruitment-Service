@@ -50,4 +50,9 @@ public class UsersDataServiceImpl implements UsersDataService {
         return userDataRepository.findAll();
     }
 
+    @Override
+    public List<UsersData> getAllUsersData() {
+        return userDataRepository.findAll();
+    }
+
 }
