@@ -16,10 +16,11 @@ import java.util.List;
 @Table(name = "RECRUITMENT_DATA")
 public class Recruitment implements Serializable {
 
-    @Column(name = "recruitment_id")
+    @Column(name = "RECRUITMENT_ID")
     @Id
     private String recruitmentId;
 
+    @Column(name = "RECRUITMENT_DESCRIPTION")
     @Column
     @OneToMany(mappedBy ="id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<User> applicationList;
@@ -27,10 +28,10 @@ public class Recruitment implements Serializable {
     @Column
     private String description;
 
-    @Column
+    @Column(name = "RECRUITMENT_CREATED_DATE")
     private Date createdDate;
 
-    @Column
+    @Column(name = "RECRUITMENT_PROVINCE")
     private String province;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
