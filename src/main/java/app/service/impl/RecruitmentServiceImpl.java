@@ -40,7 +40,6 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
     @Override
     public List<Recruitment> getAllRecruitment() {
-        List<Recruitment> getAllRecruitment = recruitmentRepository.getAllRecruitment();
-        return getAllRecruitment;
+        return recruitmentRepository.findAll();
     }
 }

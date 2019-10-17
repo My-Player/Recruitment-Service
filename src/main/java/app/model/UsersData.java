@@ -18,30 +18,42 @@ import java.io.Serializable;
 @DynamicUpdate
 public class UsersData implements Serializable {
 
-    @Column
+    @Column(name = "USER_ID")
     @Id
-    private String id;
+    private String userId;
 
-    @Column
+    @Column(name = "USER_NAME")
     private String userName;
 
-    @Column
+    @Column(name = "USER_RATING")
     private String userRating;
 
-    @Column
+    @Column(name = "USER_EMAIL")
     private String userEmail;
 
-    @Column
+    @Column(name = "USER_PHONE_NUMBER")
     private String userPhoneNumber;
 
-    @Column
+    @Column(name = "USER_ADDRESS")
     private String userAddress;
 
-    @Column
+    @Column(name = "USER_GENDER")
     private String gender;
 
-    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CLUB_ID", nullable = true)
+    private Club club;
+
+    @Column(name = "USER_AGE")
     private int age;
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
 
     public String getGender() {
         return gender;
@@ -59,12 +71,12 @@ public class UsersData implements Serializable {
         this.age = age;
     }
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
