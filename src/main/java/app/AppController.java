@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AppController {
 
+    private final BuildProperties buildProperties;
+
     @Autowired
-    BuildProperties buildProperties;
+    public AppController(BuildProperties buildProperties){
+        this.buildProperties = buildProperties;
+    }
 
     @GetMapping(path = "/version")
-    public ResponseEntity<?> getAllVersions(){
+    public ResponseEntity getAllVersions(){
         return new ResponseEntity(buildProperties.getVersion(), HttpStatus.OK);
     }
 

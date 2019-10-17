@@ -16,13 +16,6 @@ public class ResponseGeneric implements Serializable {
     private String path;
     private transient Object detail;
 
-    public ResponseGeneric(Date timestamp, int httpStatus, String path, Object detail) {
-        this.timestamp = timestamp;
-        this.httpStatus = httpStatus;
-        this.path = path;
-        this.detail = detail;
-    }
-
     public Date getTimestamp() {
         return this.timestamp;
     }
