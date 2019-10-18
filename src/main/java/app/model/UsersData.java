@@ -41,7 +41,7 @@ public class UsersData implements Serializable {
     private String gender;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CLUB_ID", nullable = true)
+    @JoinColumn(name = "CLUB_ID")
     private Club club;
 
     @Column(name = "USER_AGE")
