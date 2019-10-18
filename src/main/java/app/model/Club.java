@@ -2,53 +2,34 @@ package app.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Description goes here.
- *
- * @author patrick.kwan
- * @version 0.1
- * @since 17/10/2019
- */
+import java.util.Date;
 
 @Entity
-@Table(name = "CLUB_DATA")
+@Table(name = "club")
 public class Club implements Serializable {
 
-    @Column(name = "CLUB_ID")
+    @Column(name = "club_id")
     @Id
     private String clubId;
 
-    @Column(name = "CLUB_ADDRESS")
-    private String clubAddress;
-
-    @Column(name = "CLUB_NAME")
+    @Column(name = "club_name")
     private String clubName;
 
-    @Column(name = "CLUB_RATING")
-    private String clubRating;
+    @Column(name = "created_Date")
+    private Date createdDate;
 
-    @OneToMany(mappedBy ="userId",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @Column
-    private List<UsersData> members = new ArrayList<UsersData>();
+    @Column(name = "club_city")
+    private String clubCity;
 
-    @Column(name = "RECRUITMENT_LIST")
-    @OneToMany(mappedBy ="recruitmentId",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Recruitment> recruitment = new ArrayList<Recruitment>();
+    @Column(name = "club_logo")
+    private String clublogo;
 
-    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @Column
-    private List<UsersData> applyList = new ArrayList<UsersData>();
+    @Column(name = "max_player")
+    private String address;
 
-    public List<Recruitment> getRecruitment() {
-        return recruitment;
-    }
-
-    public void setRecruitment(List<Recruitment> recruitment) {
-        this.recruitment = recruitment;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public String getClubId() {
         return clubId;
@@ -56,14 +37,6 @@ public class Club implements Serializable {
 
     public void setClubId(String clubId) {
         this.clubId = clubId;
-    }
-
-    public String getClubAddress() {
-        return clubAddress;
-    }
-
-    public void setClubAddress(String clubAddress) {
-        this.clubAddress = clubAddress;
     }
 
     public String getClubName() {
@@ -74,20 +47,43 @@ public class Club implements Serializable {
         this.clubName = clubName;
     }
 
-    public String getClubRating() {
-        return clubRating;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setClubRating(String clubRating) {
-        this.clubRating = clubRating;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public List<UsersData> getMembers() {
-        return members;
+    public String getClubCity() {
+        return clubCity;
     }
 
-    public void setMembers(List<UsersData> members) {
-        this.members = members;
+    public void setClubCity(String clubCity) {
+        this.clubCity = clubCity;
+    }
+
+    public String getClublogo() {
+        return clublogo;
+    }
+
+    public void setClublogo(String clublogo) {
+        this.clublogo = clublogo;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
-
