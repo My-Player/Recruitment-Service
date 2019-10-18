@@ -14,13 +14,16 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "USERS_DATA")
+@Table(name = "users_data")
 @DynamicUpdate
-public class UsersData implements Serializable {
+public class User implements Serializable {
 
-    @Column(name = "USER_ID")
+    @Column(name = "user_id")
     @Id
     private String userId;
+
+    @Column
+    private String password;
 
     @Column(name = "USER_NAME")
     private String userName;

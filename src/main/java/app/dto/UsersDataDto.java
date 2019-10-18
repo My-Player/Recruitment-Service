@@ -9,6 +9,8 @@ package app.dto;
  */
 public class UsersDataDto {
 
+
+    private String userId;
     private String userName;
     private String userRating;
     private String clubName;
@@ -17,6 +19,14 @@ public class UsersDataDto {
     private String userAddress;
     private String gender;
     private int age;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getGender() {
         return gender;
