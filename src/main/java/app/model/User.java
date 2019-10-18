@@ -14,13 +14,16 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "USERS_DATA")
+@Table(name = "users_data")
 @DynamicUpdate
-public class UsersData implements Serializable {
+public class User implements Serializable {
+
+    @Column(name = "user_id")
+    @Id
+    private String userId;
 
     @Column
-    @Id
-    private String id;
+    private String password;
 
     @Column
     private String userName;
@@ -43,6 +46,18 @@ public class UsersData implements Serializable {
     @Column
     private int age;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private Club club;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -59,12 +74,12 @@ public class UsersData implements Serializable {
         this.age = age;
     }
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

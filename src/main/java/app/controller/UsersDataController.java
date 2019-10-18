@@ -3,7 +3,7 @@ package app.controller;
 import app.dto.ResponseGeneric;
 import app.dto.UsersDataDto;
 import app.en.ENUM_STATUS_CODE;
-import app.model.UsersData;
+import app.model.User;
 import app.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +39,7 @@ public class UsersDataController {
     @PostMapping(value = "/save")
     public ResponseEntity saveUsersData(@RequestBody UsersDataDto usersData){
 
-        UsersData userData = usersDataService.convertToUsersData(usersData);
+        User userData = usersDataService.convertToUsersData(usersData);
         usersDataService.save(userData);
 
         return ResponseEntity.ok(
@@ -53,8 +53,8 @@ public class UsersDataController {
 
     @GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllUsersData(){
-        List<UsersData> usersDataList = usersDataService.getAllUsersData();
-        return ResponseEntity.ok(usersDataList);
+        List<User> userList = usersDataService.getAllUsersData();
+        return ResponseEntity.ok(userList);
     }
 
 }

@@ -16,13 +16,13 @@ import java.util.List;
 @Table(name = "RECRUITMENT_DATA")
 public class Recruitment implements Serializable {
 
-    @Column
+    @Column(name = "recruitment_id")
     @Id
     private String recruitmentId;
 
     @Column
     @OneToMany(mappedBy ="id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<UsersData> applicationList;
+    private List<User> applicationList;
 
     @Column
     private String description;
@@ -32,6 +32,12 @@ public class Recruitment implements Serializable {
 
     @Column
     private String province;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "club")
+    private Club club;
+
+
 
     //club many to one
 
@@ -46,11 +52,11 @@ public class Recruitment implements Serializable {
         this.recruitmentId = recruitmentId;
     }
 
-    public List<UsersData> getApplicationList() {
+    public List<User> getApplicationList() {
         return applicationList;
     }
 
-    public void setApplicationList(List<UsersData> applicationList) {
+    public void setApplicationList(List<User> applicationList) {
         this.applicationList = applicationList;
     }
 
