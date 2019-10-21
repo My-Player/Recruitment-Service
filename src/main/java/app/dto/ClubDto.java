@@ -8,6 +8,7 @@ package app.dto;
  * @since 17/10/2019
  */
 public class ClubDto {
+
     private String clubName;
     private String clubAddress;
 }

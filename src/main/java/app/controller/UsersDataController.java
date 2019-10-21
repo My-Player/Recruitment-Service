@@ -23,7 +23,7 @@ import java.util.List;
  * @since 15/10/2019
  */
 @RestController
-@RequestMapping(value = "/user-data")
+@RequestMapping(value = "/v1")
 public class UsersDataController {
 
     private final UsersDataService usersDataService;
@@ -36,7 +36,7 @@ public class UsersDataController {
         this.httpServletRequest = httpServletRequest;
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/user-data/save")
     public ResponseEntity saveUsersData(@RequestBody UsersDataDto usersData){
 
         UsersData userData = usersDataService.convertToUsersData(usersData);
@@ -51,7 +51,7 @@ public class UsersDataController {
                         .build());
     }
 
-    @GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/users-data/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllUsersData(){
         List<UsersData> usersDataList = usersDataService.getAllUsersData();
         return ResponseEntity.ok(usersDataList);
