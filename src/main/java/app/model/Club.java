@@ -30,15 +30,15 @@ public class Club implements Serializable {
     @Column(name = "CLUB_RATING")
     private String clubRating;
 
-    @OneToMany(mappedBy ="userId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="userId",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Column
     private List<UsersData> members = new ArrayList<UsersData>();
 
     @Column(name = "RECRUITMENT_LIST")
-    @OneToMany(mappedBy ="recruitmentId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="recruitmentId",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Recruitment> recruitment = new ArrayList<Recruitment>();
 
-    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Column
     private List<UsersData> applyList = new ArrayList<UsersData>();
 
