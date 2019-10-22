@@ -8,7 +8,7 @@ public interface ApplicationInfoService {
 
     public void saveApplicationInfo(ApplicationInfoDto dto);
 
-    public List<ApplicationInfoDto> listsAllRecruitmentInfo(String clubId);
+    public List<ApplicationInfoDto> listsAllApplicationInfo(String clubId);
 
 
     //TODO see all of the applied request to clubs;
