@@ -2,6 +2,7 @@ package app.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
 import java.util.Date;
 
 @Entity
@@ -87,3 +88,4 @@ public class Club implements Serializable {
         this.user = user;
     }
 }
+
