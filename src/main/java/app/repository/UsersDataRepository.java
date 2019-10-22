@@ -13,7 +13,12 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
+<<<<<<< HEAD
 public interface UsersDataRepository extends JpaRepository<User, String> {
     User findById(String id);
 
+=======
+public interface UsersDataRepository extends JpaRepository<UsersData, String> {
+    UsersData findByUserId(String id);
+>>>>>>> origin/My-Player-Recruitment-1
 }
