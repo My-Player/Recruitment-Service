@@ -77,4 +77,5 @@ public class ApplicationInfo implements Serializable {
     public void setRecruitment(Recruitment recruitment) {
         this.recruitment = recruitment;
     }
+
 }
