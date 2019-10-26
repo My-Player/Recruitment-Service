@@ -21,14 +21,10 @@ public class Recruitment implements Serializable {
     private String recruitmentId;
 
     @Column(name = "RECRUITMENT_DESCRIPTION")
-<<<<<<< HEAD
-    @Column
     @OneToMany(mappedBy ="id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<User> applicationList;
 
     @Column
-=======
->>>>>>> origin/My-Player-Recruitment-1
     private String description;
 
     @Column(name = "RECRUITMENT_CREATED_DATE")
@@ -37,19 +33,11 @@ public class Recruitment implements Serializable {
     @Column(name = "RECRUITMENT_PROVINCE")
     private String province;
 
-<<<<<<< HEAD
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "club")
     private Club club;
 
 
-
-    //club many to one
-=======
-    @ManyToOne
-    @JoinColumn(name = "CLUB_ID", nullable = true)
-    private Club club;
->>>>>>> origin/My-Player-Recruitment-1
 
     //logo
 
@@ -61,7 +49,6 @@ public class Recruitment implements Serializable {
         this.recruitmentId = recruitmentId;
     }
 
-<<<<<<< HEAD
     public List<User> getApplicationList() {
         return applicationList;
     }
@@ -70,8 +57,6 @@ public class Recruitment implements Serializable {
         this.applicationList = applicationList;
     }
 
-=======
->>>>>>> origin/My-Player-Recruitment-1
     public String getDescription() {
         return description;
     }
