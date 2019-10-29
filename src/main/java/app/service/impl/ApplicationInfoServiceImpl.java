@@ -45,7 +45,7 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
 
     @Override
     public List<ApplicationInfoDto> listsAllApplicationInfo(String clubId) {
-        List<ApplicationInfoDto> list = new ArrayList<>();
+        List<ApplicationInfoDto> list = new ArrayList();
         List<ApplicationInfo> applicationInfos = appInfoRepository.findApplicationInfoByClubId(clubId);
         Club club = clubRepository.findOne(clubId);
 
