@@ -121,4 +121,12 @@ public class User implements Serializable {
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
