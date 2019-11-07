@@ -22,4 +22,5 @@ public class ApplicationInfoResponse {
     public void setResponse(List<ApplicationInfoDto> response) {
         this.response = response;
     }
+
 }
