@@ -65,6 +65,7 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
             dto.setApplicationInfoId(rec.getApplicationInfoId());
             dto.setUserId(rec.getUser().getUserId());
             dto.setUserName(rec.getUser().getUserName());
+            dto.setRecruitmentId(rec.getRecruitment().getRecruitmentId());
             dto.setRecruitmentStatus(PROCESSED.getMessage());
             list.add(dto);
         }
@@ -80,6 +81,7 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
             if(applicationInfo.getUser().getUserId().equals(userId)){
                 ApplicationInfoDto appDto = new ApplicationInfoDto();
                 appDto.setApplicationInfoId(applicationInfo.getApplicationInfoId());
+                appDto.setRecruitmentId(applicationInfo.getRecruitment().getRecruitmentId());
                 appDto.setUserId(applicationInfo.getUser().getUserId());
                 appDto.setUserName(applicationInfo.getUser().getUserName());
                 appDto.setRecruitmentStatus(APPROVED.getMessage());

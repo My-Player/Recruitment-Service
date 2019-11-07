@@ -33,4 +33,6 @@ public class RecruitmentController {
         return ResponseEntity.ok(recruitmentService.getAllRecruitment());
     }
 
+
+
 }
