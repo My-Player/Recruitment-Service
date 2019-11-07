@@ -5,7 +5,7 @@ import java.util.List;
 public class ApplicationInfoResponse {
 
     private String clubId;
-    List<ApplicationInfoDto> response;
+    private List<ApplicationInfoDto> response;
 
     public String getClubId() {
         return clubId;

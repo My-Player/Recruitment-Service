@@ -20,6 +20,7 @@ public class ClubServiceImpl implements ClubService {
 
     private final ClubRepository clubRepository;
 
+    //at user's perspective
     @Autowired
     public ClubServiceImpl(ClubRepository clubRepository){
         this.clubRepository = clubRepository;
