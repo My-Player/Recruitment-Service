@@ -47,13 +47,15 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
 
     //ini buat list all player who apply in club
     @Override
-    public List<ApplicationInfoDto> listsAllApplicationInfo(String clubId) {
+    public ApplicationInfoResponse listsAllApplicationInfo(String clubId) {
+        ApplicationInfoResponse response = new ApplicationInfoResponse();
         List<ApplicationInfoDto> list = new ArrayList();
         List<ApplicationInfo> applicationInfos = appInfoRepository.findApplicationInfoByClubId(clubId);
         Club club = clubRepository.findOne(clubId);
 
         if (club != null) getApplicationData(list,applicationInfos);
-        return list;
+        response.setResponse(list);
+        return response;
     }
 
 
@@ -69,7 +71,8 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
     }
 
     @Override
-    public ApplicationInfoResponse applicationSuccess(String userId) {
+    public ApplicationInfoResponse applicationSuccess(String clubId,String userId) {
+        Club club = clubRepository.findClubByClubId(clubId);
         ApplicationInfoResponse response = new ApplicationInfoResponse();
         List<ApplicationInfo> applicationInfos = appInfoRepository.getAllApplicationInfoByUserId(userId);
         List<ApplicationInfoDto> applicationInfoDtos = new ArrayList();
@@ -83,6 +86,7 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
                 applicationInfoDtos.add(appDto);
             }
         }
+        response.setClubId(club.getClubId());
         response.setResponse(applicationInfoDtos);
         return response;
     }

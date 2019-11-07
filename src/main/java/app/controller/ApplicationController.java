@@ -20,8 +20,8 @@ public class ApplicationController {
     }
 
     @PutMapping("/application-success")
-    public ResponseEntity getApplicationSuccess(@RequestParam String userId){
-        return new ResponseEntity(applicationInfoService.applicationSuccess(userId),HttpStatus.OK);
+    public ResponseEntity getApplicationSuccess(@RequestParam String clubId,@RequestParam String userId){
+        return new ResponseEntity(applicationInfoService.applicationSuccess(clubId,userId),HttpStatus.OK);
     }
 
 

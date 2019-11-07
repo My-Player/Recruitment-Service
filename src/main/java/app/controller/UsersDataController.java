@@ -2,7 +2,6 @@ package app.controller;
 
 import app.dto.ResponseGeneric;
 import app.dto.UsersDataDto;
-import app.en.ENUM_STATUS_CODE;
 import app.model.User;
 import app.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import static app.constant.StatusConstant.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -46,7 +47,7 @@ public class UsersDataController {
                 new ResponseGeneric.Builder()
                         .withHttpStatus(HttpStatus.OK.value())
                         .withPath(httpServletRequest.getRequestURI())
-                        .withDetail(ENUM_STATUS_CODE.SUCCESS.name())
+                        .withDetail(SUCCESS.getMessage())
                         .withTimestamp(new Date())
                         .build());
     }

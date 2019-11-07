@@ -11,5 +11,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since 17/10/2019
  */
 public interface ClubRepository extends JpaRepository<Club, String> {
-
+    Club findClubByClubId(String clubId);
 }

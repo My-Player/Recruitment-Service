@@ -10,9 +10,9 @@ public interface ApplicationInfoService {
 
      void saveApplicationInfo(ApplicationInfoDto dto);
 
-     List<ApplicationInfoDto> listsAllApplicationInfo(String clubId);
+     ApplicationInfoResponse listsAllApplicationInfo(String clubId);
 
-     ApplicationInfoResponse applicationSuccess(String userId);
+     ApplicationInfoResponse applicationSuccess(String clubId,String userId);
 
 
     //TODO see all of the applied request to clubs;

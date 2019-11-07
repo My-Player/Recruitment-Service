@@ -38,9 +38,6 @@ public class Recruitment implements Serializable {
     private Club club;
 
 
-
-    //logo
-
     public String getRecruitmentId() {
         return recruitmentId;
     }
