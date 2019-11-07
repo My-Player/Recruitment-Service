@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.dto.ApplicationInfoDto;
+import app.dto.ErrorResponse;
 import app.service.ApplicationInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,14 +16,21 @@ public class ApplicationController {
     ApplicationInfoService applicationInfoService;
 
     @GetMapping("/application")
-    public ResponseEntity getAllApplication(@RequestParam String clubId){
-        return new ResponseEntity(applicationInfoService.listsAllApplicationInfo(clubId), HttpStatus.OK);
+    public ResponseEntity getAllApplication(@RequestParam String clubId) {
+        try {
+            return new ResponseEntity(applicationInfoService.listsAllApplicationInfo(clubId), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(new ErrorResponse(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/application-success")
-    public ResponseEntity getApplicationSuccess(@RequestParam String clubId,@RequestParam String userId){
-        return new ResponseEntity(applicationInfoService.applicationSuccess(clubId,userId),HttpStatus.OK);
+    public ResponseEntity getApplicationSuccess(@RequestParam String clubId, @RequestParam String userId) {
+        try{
+        return new ResponseEntity(applicationInfoService.applicationSuccess(clubId, userId), HttpStatus.OK);
+    }catch(Exception e){
+        return new ResponseEntity(new ErrorResponse(e.getMessage()),HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
+}
 
 }
