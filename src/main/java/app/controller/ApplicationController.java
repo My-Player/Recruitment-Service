@@ -5,10 +5,7 @@ import app.service.ApplicationInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1")
@@ -18,8 +15,14 @@ public class ApplicationController {
     ApplicationInfoService applicationInfoService;
 
     @GetMapping("/application")
-    public ResponseEntity<ApplicationInfoDto> getAllApplication(@RequestParam String clubId){
+    public ResponseEntity getAllApplication(@RequestParam String clubId){
         return new ResponseEntity(applicationInfoService.listsAllApplicationInfo(clubId), HttpStatus.OK);
     }
+
+    @PutMapping("/application-success")
+    public ResponseEntity getApplicationSuccess(@RequestParam String userId){
+        return new ResponseEntity(applicationInfoService.applicationSuccess(userId),HttpStatus.OK);
+    }
+
 
 }

@@ -15,4 +15,6 @@ public interface ApplicationInfoRepository extends JpaRepository<ApplicationInfo
     @Query(value = "select * FROM `ApplicationInfo` WHERE club_id LIKE  :clubId order by trans_time desc",nativeQuery = true)
     List<ApplicationInfo> findApplicationInfoByClubId(@Param("clubId") String clubId);
 
+    List<ApplicationInfo> getAllApplicationInfoByUserId(String userId);
+
 }
