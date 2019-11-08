@@ -39,17 +39,18 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
         Club club = clubRepository.findClubByClubId(recruitmentDto.getClubId());
         Recruitment recruitment = new Recruitment();
-
         try{
             recruitment.setProvince(recruitmentDto.getProvince());
             recruitment.setDescription(recruitmentDto.getDescription());
             recruitment.setTitle(recruitmentDto.getTitle());
             recruitment.setClub(club);
+            return recruitmentRepository.save(recruitment);
 
         }catch(Exception e){
             LOGGER.info(e.getMessage());
+            return null;
         }
-        return recruitmentRepository.save(recruitment);
+
     }
 
     @Override
