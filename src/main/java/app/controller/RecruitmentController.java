@@ -1,6 +1,6 @@
 package app.controller;
 
-import app.dto.ErrorResponse;
+import app.dto.response.ErrorResponse;
 import app.dto.RecruitmentDto;
 import app.service.RecruitmentService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package app.dto;
+package app.dto.response;
 
 public class ErrorResponse {
 

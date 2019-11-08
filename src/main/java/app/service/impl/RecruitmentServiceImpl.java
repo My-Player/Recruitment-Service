@@ -40,12 +40,8 @@ public class RecruitmentServiceImpl implements RecruitmentService {
         Club club = clubRepository.findClubByClubId(recruitmentDto.getClubId());
         Recruitment recruitment = new Recruitment();
         try{
-            recruitment.setProvince(recruitmentDto.getProvince());
-            recruitment.setDescription(recruitmentDto.getDescription());
-            recruitment.setTitle(recruitmentDto.getTitle());
-            recruitment.setClub(club);
+            convertToRecruitment(club,recruitment,recruitmentDto);
             return recruitmentRepository.save(recruitment);
-
         }catch(Exception e){
             LOGGER.info(e.getMessage());
             return null;
@@ -53,9 +49,11 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
     }
 
-    @Override
-    public Recruitment convertToRecruitment(RecruitmentDto recruitmentDto) {
-        return null;
+    private void convertToRecruitment(Club club,Recruitment recruitment,RecruitmentDto recruitmentDto) {
+        recruitment.setProvince(recruitmentDto.getProvince());
+        recruitment.setDescription(recruitmentDto.getDescription());
+        recruitment.setTitle(recruitmentDto.getTitle());
+        recruitment.setClub(club);
     }
 
     @Override

@@ -54,6 +54,7 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
         Club club = clubRepository.findOne(clubId);
 
         if (club != null) getApplicationData(list,applicationInfos);
+        response.setClubId(clubId);
         response.setResponse(list);
         return response;
     }

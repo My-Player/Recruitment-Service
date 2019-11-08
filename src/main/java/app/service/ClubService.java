@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface ClubService {
     List<Club> getAllClub();
+    List<Club> getAllClubBasedOnClubCity(String clubCity);
 }

@@ -1,6 +1,6 @@
 package app.controller;
 
-import app.dto.ErrorResponse;
+import app.dto.response.ErrorResponse;
 import app.service.ApplicationInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

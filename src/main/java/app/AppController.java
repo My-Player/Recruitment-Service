@@ -21,7 +21,4 @@ public class AppController {
     public ResponseEntity getAllVersions(){
         return new ResponseEntity(buildProperties.getVersion(), HttpStatus.OK);
     }
-
-
-
 }
