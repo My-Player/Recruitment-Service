@@ -117,5 +117,4 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
         response.setResponse(applicationInfoDtos);
         return response;
     }
-
 }
