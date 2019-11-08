@@ -1,4 +1,6 @@
-package app.dto;
+package app.dto.response;
+
+import app.dto.ApplicationInfoDto;
 
 import java.util.List;
 

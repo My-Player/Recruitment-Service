@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.dto.ApplicationInfoDto;
 import app.dto.ErrorResponse;
 import app.service.ApplicationInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,7 @@
 package app.service;
 
 import app.dto.ApplicationInfoDto;
-import app.dto.ApplicationInfoResponse;
-import app.model.ApplicationInfo;
-
-import java.util.List;
+import app.dto.response.ApplicationInfoResponse;
 
 public interface ApplicationInfoService {
 

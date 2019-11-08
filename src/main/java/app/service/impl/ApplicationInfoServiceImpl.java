@@ -1,7 +1,7 @@
 package app.service.impl;
 
 import app.dto.ApplicationInfoDto;
-import app.dto.ApplicationInfoResponse;
+import app.dto.response.ApplicationInfoResponse;
 import app.model.Club;
 import app.model.Recruitment;
 import app.model.ApplicationInfo;
