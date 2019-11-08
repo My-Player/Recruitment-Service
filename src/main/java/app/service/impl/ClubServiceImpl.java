@@ -30,4 +30,9 @@ public class ClubServiceImpl implements ClubService {
     public List<Club> getAllClub() {
         return clubRepository.findAll();
     }
+
+    @Override
+    public List<Club> getAllClubBasedOnClubCity(String clubCity) {
+        return  clubRepository.findClubByClubCity(clubCity);
+    }
 }

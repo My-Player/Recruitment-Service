@@ -14,7 +14,6 @@ import java.util.List;
  */
 public interface RecruitmentService {
     Recruitment saveRecruitment(RecruitmentDto recruitmentDto);
-    Recruitment convertToRecruitment(RecruitmentDto recruitmentDto);
     List<Recruitment> getAllRecruitment();
 
 
