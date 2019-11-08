@@ -45,13 +45,9 @@ public class UsersDataServiceImpl implements UsersDataService {
         return user;
     }
 
-    @Override
-    public List<User> getAllUsersData() {
-        return userDataRepository.findAll();
-    }
 
     @Override
-    public List<UsersData> getAllUsersData() {
+    public List<User> getAllUsersData() {
         return userDataRepository.findAll();
     }
 
