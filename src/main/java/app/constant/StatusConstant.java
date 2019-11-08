@@ -1,7 +1,7 @@
 package app.constant;
 
 public enum StatusConstant {
-    PROCESSED("processed"),APPROVED("approved"),REJECTED("rejected"),CANCELED("canceled"),SUCCESS("success");
+    PROCESSED("processed"),APPROVED("approved"),REJECTED("rejected"),CANCELED("canceled"),SUCCESS("success"),UNAPPLIED("unapplied");
 
 
 

@@ -30,7 +30,15 @@ public class ApplicationController {
         return new ResponseEntity(applicationInfoService.applicationSuccess(clubId, userId), HttpStatus.OK);
     }catch(Exception e){
         return new ResponseEntity(new ErrorResponse(e.getMessage()),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-}
+    @PutMapping("/application-rejected")
+    public ResponseEntity getApplicationRejected(@RequestParam String clubId, @RequestParam String userId){
+        try{
+            return new ResponseEntity(applicationInfoService.applicationRejected(clubId,userId),HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity(new ErrorResponse(e.getMessage()),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }

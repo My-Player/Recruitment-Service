@@ -14,6 +14,8 @@ public interface ApplicationInfoService {
 
      ApplicationInfoResponse applicationSuccess(String clubId,String userId);
 
+     ApplicationInfoResponse applicationRejected(String clubId, String userId);
+
 
     //TODO see all of the applied request to clubs;
 }

@@ -7,12 +7,17 @@ package app.dto;
  * @since 15/10/2019
  */
 public class RecruitmentDto {
+    private String title;
 
     private String description;
 
     private String province;
 
     private String clubId;
+
+    private String clubName;
+
+
 
     public String getDescription() {
         return description;
@@ -37,4 +42,12 @@ public class RecruitmentDto {
     public void setClubId(String clubId) {
         this.clubId = clubId;
     }
+
+    public String getTitle() { return title; }
+
+    public void setTitle(String title) { this.title = title; }
+
+    public String getClubName() { return clubName; }
+
+    public void setClubName(String clubName) { this.clubName = clubName; }
 }
