@@ -8,13 +8,12 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "recruitment_info")
+@Table(name = "application")
 @DynamicUpdate
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
 public class ApplicationInfo implements Serializable {
     private static final long serialVersionUID = 1L;
-
 
     @Id
     @Column(name="application_info_id")
@@ -27,7 +26,7 @@ public class ApplicationInfo implements Serializable {
     private String recruitmentStatus;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "recruitment_id")
     private Recruitment recruitment;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

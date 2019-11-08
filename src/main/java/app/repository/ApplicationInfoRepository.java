@@ -12,9 +12,9 @@ import java.util.List;
 @Repository
 public interface ApplicationInfoRepository extends JpaRepository<ApplicationInfo,String> {
 
-    @Query(value = "select * FROM `ApplicationInfo` WHERE club_id LIKE  :clubId order by trans_time desc",nativeQuery = true)
-    List<ApplicationInfo> findApplicationInfoByClubId(@Param("clubId") String clubId);
+//    @Query(value = "select * FROM aplication WHERE club_id LIKE :clubId ",nativeQuery = true)
+//    List<ApplicationInfo> findApplicationInfoByClubId(@Param("clubId") String clubId);
 
-    List<ApplicationInfo> getAllApplicationInfoByUserId(String userId);
 
+    List<ApplicationInfo> getAllByApplicationInfoId(String id);
 }

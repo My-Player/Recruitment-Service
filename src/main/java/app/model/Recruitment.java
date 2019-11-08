@@ -3,7 +3,6 @@ package app.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Description goes here.
@@ -13,30 +12,45 @@ import java.util.List;
  * @since 15/10/2019
  */
 @Entity
-@Table(name = "RECRUITMENT_DATA")
+@Table(name = "recruitment")
 public class Recruitment implements Serializable {
 
-    @Column
+    @Column(name = "RECRUITMENT_ID")
     @Id
     private String recruitmentId;
 
-    @Column
-    @OneToMany(mappedBy ="id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<UsersData> applicationList;
-
-    @Column
+    @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column
+    @Column(name = "RECRUITMENT_CREATED_DATE")
     private Date createdDate;
 
-    @Column
+    @Column(name = "RECRUITMENT_PROVINCE")
     private String province;
 
-    //club many to one
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "club_id")
+    private Club club;
 
-    //logo
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
 
     public String getRecruitmentId() {
         return recruitmentId;
@@ -44,14 +58,6 @@ public class Recruitment implements Serializable {
 
     public void setRecruitmentId(String recruitmentId) {
         this.recruitmentId = recruitmentId;
-    }
-
-    public List<UsersData> getApplicationList() {
-        return applicationList;
-    }
-
-    public void setApplicationList(List<UsersData> applicationList) {
-        this.applicationList = applicationList;
     }
 
     public String getDescription() {

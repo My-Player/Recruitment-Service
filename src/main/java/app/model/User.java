@@ -1,6 +1,7 @@
 package app.model;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,8 +19,8 @@ import java.io.Serializable;
 @DynamicUpdate
 public class User implements Serializable {
 
-    @Column(name = "user_id")
     @Id
+    @Column(name = "Id")
     private String userId;
 
     @Column
@@ -32,6 +33,7 @@ public class User implements Serializable {
     private String userRating;
 
     @Column(name = "USER_EMAIL")
+    @Email
     private String userEmail;
 
     @Column(name = "USER_PHONE_NUMBER")

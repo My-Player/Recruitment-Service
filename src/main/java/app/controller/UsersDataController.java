@@ -1,9 +1,9 @@
 package app.controller;
 
+import app.constant.StatusConstant;
 import app.dto.ResponseGeneric;
 import app.dto.UsersDataDto;
-import app.en.ENUM_STATUS_CODE;
-import app.model.UsersData;
+import app.model.User;
 import app.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ import java.util.List;
  * @since 15/10/2019
  */
 @RestController
-@RequestMapping(value = "/user-data")
+@RequestMapping(value = "/v1")
 public class UsersDataController {
 
     private final UsersDataService usersDataService;
@@ -36,25 +36,25 @@ public class UsersDataController {
         this.httpServletRequest = httpServletRequest;
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/user-data/save")
     public ResponseEntity saveUsersData(@RequestBody UsersDataDto usersData){
 
-        UsersData userData = usersDataService.convertToUsersData(usersData);
+        User userData = usersDataService.convertToUsersData(usersData);
         usersDataService.save(userData);
 
         return ResponseEntity.ok(
                 new ResponseGeneric.Builder()
                         .withHttpStatus(HttpStatus.OK.value())
                         .withPath(httpServletRequest.getRequestURI())
-                        .withDetail(ENUM_STATUS_CODE.SUCCESS.name())
+                        .withDetail(StatusConstant.APPROVED)
                         .withTimestamp(new Date())
                         .build());
     }
 
-    @GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/users-data/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllUsersData(){
-        List<UsersData> usersDataList = usersDataService.getAllUsersData();
-        return ResponseEntity.ok(usersDataList);
+        List<User> userList = usersDataService.getAllUsersData();
+        return ResponseEntity.ok(userList);
     }
 
 }

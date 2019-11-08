@@ -28,10 +28,6 @@ public class Club implements Serializable {
     @Column(name = "max_player")
     private String address;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
     public String getClubId() {
         return clubId;
     }
@@ -78,14 +74,6 @@ public class Club implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
 

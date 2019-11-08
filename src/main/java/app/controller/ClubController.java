@@ -15,19 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1")
 public class ClubController {
 
-    @Autowired
-    ClubService clubService;
+    private final ClubService clubService;
 
-    public static final Logger log = Logger.getLogger(ClubController.class.getName());
+    @Autowired
+    public ClubController(ClubService clubService){
+        this.clubService = clubService;
+    }
+
+    private static final Logger log = Logger.getLogger(ClubController.class.getName());
 
     @GetMapping("/club-list")
-    public ResponseEntity getAllClub() {
+    public ResponseEntity<?> getAllClub() {
         try {
-            return new ResponseEntity(clubService.getAllClub(), HttpStatus.OK);
+            return ResponseEntity.ok(clubService.getAllClub());
         }catch (Exception e){
             log.info("failed to fetch all club data: {}" + e.getMessage());
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
     }
 
