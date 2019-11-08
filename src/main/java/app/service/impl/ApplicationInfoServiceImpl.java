@@ -71,6 +71,7 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
         }
     }
 
+
     @Override
     public ApplicationInfoResponse applicationSuccess(String clubId,String userId) {
         Club club = clubRepository.findClubByClubId(clubId);
@@ -85,6 +86,30 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
                 appDto.setUserId(applicationInfo.getUser().getUserId());
                 appDto.setUserName(applicationInfo.getUser().getUserName());
                 appDto.setRecruitmentStatus(APPROVED.getMessage());
+                applicationInfoDtos.add(appDto);
+            }
+        }
+        response.setClubId(club.getClubId());
+        response.setResponse(applicationInfoDtos);
+        return response;
+    }
+
+    @Override
+    public ApplicationInfoResponse applicationRejected(String clubId, String userId) {
+
+        ApplicationInfoResponse response = new ApplicationInfoResponse();
+        Club club = clubRepository.findClubByClubId(clubId);
+        List<ApplicationInfoDto> applicationInfoDtos = new ArrayList();
+        List<ApplicationInfo> applicationInfos = appInfoRepository.getAllApplicationInfoByUserId(userId);
+
+        for(ApplicationInfo applicationInfo : applicationInfos){
+            if(applicationInfo.getUser().getUserId().equals(userId)){
+                ApplicationInfoDto appDto = new ApplicationInfoDto();
+                appDto.setRecruitmentStatus(REJECTED.getMessage());
+                appDto.setApplicationInfoId(applicationInfo.getApplicationInfoId());
+                appDto.setUserId(applicationInfo.getUser().getUserId());
+                appDto.setRecruitmentId(applicationInfo.getRecruitment().getRecruitmentId());
+                appDto.setUserName(applicationInfo.getUser().getUserName());
                 applicationInfoDtos.add(appDto);
             }
         }

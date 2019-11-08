@@ -27,6 +27,11 @@ public class Recruitment implements Serializable {
     @Column
     private String description;
 
+    @Column(name = "TITLE")
+    private String title;
+
+
+
     @Column(name = "RECRUITMENT_CREATED_DATE")
     private Date createdDate;
 
@@ -76,5 +81,21 @@ public class Recruitment implements Serializable {
 
     public void setProvince(String province) {
         this.province = province;
+    }
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
