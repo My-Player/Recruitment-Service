@@ -18,6 +18,8 @@ import java.util.Date;
 @Table(name = "recruitment")
 public class Recruitment implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "RECRUITMENT_ID")@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
     @GenericGenerator(

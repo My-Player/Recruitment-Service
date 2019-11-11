@@ -15,6 +15,7 @@ import java.util.Date;
 @DynamicUpdate
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ApplicationInfo implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id

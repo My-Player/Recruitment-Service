@@ -12,6 +12,8 @@ import java.util.Date;
 @Table(name = "club")
 public class Club implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Column(name = "club_id")
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
