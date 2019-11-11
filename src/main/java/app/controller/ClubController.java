@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.dto.ClubDto;
+import app.dto.response.ErrorResponse;
 import app.model.Club;
 import app.service.ClubService;
 import org.apache.log4j.Logger;
@@ -40,9 +41,13 @@ public class ClubController {
      */
     @PostMapping("/save-club")
     public ResponseEntity saveClub(@RequestBody ClubDto clubDto) {
-        Club newClub = clubService.convertToClubAndSave(clubDto);
-
-        return ResponseEntity.ok(newClub);
+        try {
+            Club newClub = clubService.convertToClubAndSave(clubDto);
+            return ResponseEntity.ok(newClub);
+        }catch (Exception e){
+            log.info("failed to save club data: {}" + e.getMessage());
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
