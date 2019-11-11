@@ -13,9 +13,8 @@ import java.util.List;
  * @since 15/10/2019
  */
 public interface RecruitmentService {
-    Recruitment saveRecruitment(RecruitmentDto recruitmentDto);
+    Recruitment saveRecruitment(Recruitment recruitment);
+    Recruitment convertToRecruitment(RecruitmentDto recruitmentDto);
     List<Recruitment> getAllRecruitment();
-
-
-
+    List<Recruitment> getAllByClub(String clubId);
 }

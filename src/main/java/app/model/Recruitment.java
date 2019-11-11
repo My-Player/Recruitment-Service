@@ -1,9 +1,11 @@
 package app.model;
 
+import app.generator.StringPrefixedSequenceIdGenerator;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Description goes here.
@@ -13,24 +15,24 @@ import java.util.List;
  * @since 15/10/2019
  */
 @Entity
-@Table(name = "RECRUITMENT_DATA")
+@Table(name = "recruitment")
 public class Recruitment implements Serializable {
 
-    @Column(name = "RECRUITMENT_ID")
+    private static final long serialVersionUID = 1L;
+
     @Id
+    @Column(name = "RECRUITMENT_ID")@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+    @GenericGenerator(
+            name = "book_seq",
+            strategy = "app.generator.StringPrefixedSequenceIdGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "RC"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")})
     private String recruitmentId;
 
-    @Column(name = "RECRUITMENT_DESCRIPTION")
-    @OneToMany(mappedBy ="id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<User> applicationList;
-
-    @Column
+    @Column(name = "DESCRIPTION")
     private String description;
-
-    @Column(name = "TITLE")
-    private String title;
-
-
 
     @Column(name = "RECRUITMENT_CREATED_DATE")
     private Date createdDate;
@@ -38,10 +40,17 @@ public class Recruitment implements Serializable {
     @Column(name = "RECRUITMENT_PROVINCE")
     private String province;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "club")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "club_id")
     private Club club;
 
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
 
     public String getRecruitmentId() {
         return recruitmentId;
@@ -49,14 +58,6 @@ public class Recruitment implements Serializable {
 
     public void setRecruitmentId(String recruitmentId) {
         this.recruitmentId = recruitmentId;
-    }
-
-    public List<User> getApplicationList() {
-        return applicationList;
-    }
-
-    public void setApplicationList(List<User> applicationList) {
-        this.applicationList = applicationList;
     }
 
     public String getDescription() {
@@ -81,21 +82,5 @@ public class Recruitment implements Serializable {
 
     public void setProvince(String province) {
         this.province = province;
-    }
-
-    public Club getClub() {
-        return club;
-    }
-
-    public void setClub(Club club) {
-        this.club = club;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 }

@@ -1,18 +1,22 @@
 package app.service;
 
 import app.dto.ApplicationInfoDto;
-import app.dto.response.ApplicationInfoResponse;
+import app.model.ApplicationInfo;
+
+import java.util.List;
 
 public interface ApplicationInfoService {
+    //apply to club
+    ApplicationInfo saveApplicationInfo(ApplicationInfoDto dto);
 
-     void saveApplicationInfo(ApplicationInfoDto dto);
+    //To see all of the applied request to clubs;
+    List<ApplicationInfo> listsAllApplicationInfoByClubId(String clubId);
 
-     ApplicationInfoResponse listsAllApplicationInfo(String clubId);
+    //ApplicationInfoResponse applicationSuccess(String userId);
 
-     ApplicationInfoResponse applicationSuccess(String clubId,String userId);
+    void doSigningPlayer(String userId, String clubId);
 
-     ApplicationInfoResponse applicationRejected(String clubId, String userId);
+    void doRejectPlayer(String applicationId);
 
-
-    //TODO see all of the applied request to clubs;
+    ApplicationInfo findByUserIdAndClubId(String userId, String clubId);
 }

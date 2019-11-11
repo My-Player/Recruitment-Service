@@ -1,10 +1,7 @@
 package app.controller;
 
-import app.dto.response.ErrorResponse;
-import app.dto.RecruitmentDto;
 import app.service.RecruitmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,28 +20,18 @@ public class RecruitmentController {
     private final RecruitmentService recruitmentService;
 
     @Autowired
-    public RecruitmentController(RecruitmentService recruitmentService){
+    public RecruitmentController(RecruitmentService recruitmentService) {
         this.recruitmentService = recruitmentService;
-
     }
 
     @GetMapping(path = "/recruitment", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllRecruitment() {
-        try {
-            return ResponseEntity.ok(recruitmentService.getAllRecruitment());
-        }catch(Exception e){
-            return new ResponseEntity(new ErrorResponse(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return ResponseEntity.ok(recruitmentService.getAllRecruitment());
     }
 
-    @PostMapping(path = "/add-recruitment", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity postNewRecruitment(@RequestBody RecruitmentDto dto){
-        try{
-            return new ResponseEntity(recruitmentService.saveRecruitment(dto),HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity(new ErrorResponse(e.getMessage()),HttpStatus.BAD_REQUEST);
-        }
+    //get recruitment by club
+    @GetMapping("/get-recruitment-by-club")
+    public ResponseEntity getRecruitment(@RequestParam String clubId){
+        return ResponseEntity.ok(recruitmentService.getAllByClub(clubId));
     }
-
-
 }

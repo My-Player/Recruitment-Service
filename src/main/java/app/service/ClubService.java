@@ -1,5 +1,6 @@
 package app.service;
 
+import app.dto.ClubDto;
 import app.model.Club;
 
 import java.util.List;
@@ -13,5 +14,6 @@ import java.util.List;
  */
 public interface ClubService {
     List<Club> getAllClub();
-    List<Club> getAllClubBasedOnClubCity(String clubCity);
+    Club convertToClubAndSave(ClubDto clubDto);
+    Club getOne(String clubId);
 }

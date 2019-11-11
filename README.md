@@ -1,2 +1,2 @@
-# Recruitment-Service
-My Player Back-End for Recruitment Process
+# recruitment-service
+My Player back-end service for recruitment

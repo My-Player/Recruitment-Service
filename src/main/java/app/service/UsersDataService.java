@@ -13,8 +13,10 @@ import java.util.List;
  * @since 15/10/2019
  */
 public interface UsersDataService {
-
-    User save(User user);
-    User convertToUsersData(UsersDataDto usersDataDto);
+    User convertToUsersDataAndSave(UsersDataDto usersDataDto);
     List<User> getAllUsersData();
+
+    User setUserClub(String user, String club);
+
+    List<User> getAllByClub(String clubId);
 }

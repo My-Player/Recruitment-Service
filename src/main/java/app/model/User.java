@@ -1,6 +1,9 @@
 package app.model;
 
+import app.generator.StringPrefixedSequenceIdGenerator;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,8 +21,18 @@ import java.io.Serializable;
 @DynamicUpdate
 public class User implements Serializable {
 
-    @Column(name = "user_id")
+    private static final long serialVersionUID = 1L;
+
     @Id
+    @Column(name = "Id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+    @GenericGenerator(
+            name = "book_seq",
+            strategy = "app.generator.StringPrefixedSequenceIdGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "US"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")})
     private String userId;
 
     @Column
@@ -32,6 +45,7 @@ public class User implements Serializable {
     private String userRating;
 
     @Column(name = "USER_EMAIL")
+    @Email
     private String userEmail;
 
     @Column(name = "USER_PHONE_NUMBER")

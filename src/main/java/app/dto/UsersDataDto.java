@@ -9,40 +9,14 @@ package app.dto;
  */
 public class UsersDataDto {
 
-
-    private String userId;
     private String userName;
     private String userRating;
     private String clubName;
     private String userEmail;
     private String userPhoneNumber;
     private String userAddress;
-    private String gender;
-    private int age;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
+    private String userGender;
+    private int userAge;
 
     public String getUserName() {
         return userName;
@@ -50,6 +24,22 @@ public class UsersDataDto {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUserGender() {
+        return userGender;
+    }
+
+    public void setUserGender(String userGender) {
+        this.userGender = userGender;
+    }
+
+    public int getUserAge() {
+        return userAge;
+    }
+
+    public void setUserAge(int userAge) {
+        this.userAge = userAge;
     }
 
     public String getUserRating() {
