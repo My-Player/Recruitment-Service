@@ -43,6 +43,7 @@ public class ApplicationInfoServiceImpl implements ApplicationInfoService {
         appInfoRepository.save(rec);
 
         return rec;
+
     }
 
     //ini buat list all player who apply in club
