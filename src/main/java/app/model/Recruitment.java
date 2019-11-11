@@ -1,5 +1,8 @@
 package app.model;
 
+import app.generator.StringPrefixedSequenceIdGenerator;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,8 +18,15 @@ import java.util.Date;
 @Table(name = "recruitment")
 public class Recruitment implements Serializable {
 
-    @Column(name = "RECRUITMENT_ID")
     @Id
+    @Column(name = "RECRUITMENT_ID")@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+    @GenericGenerator(
+            name = "book_seq",
+            strategy = "app.generator.StringPrefixedSequenceIdGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "RC"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")})
     private String recruitmentId;
 
     @Column(name = "DESCRIPTION")
@@ -31,18 +41,6 @@ public class Recruitment implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "club_id")
     private Club club;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Club getClub() {
         return club;

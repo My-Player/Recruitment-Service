@@ -1,9 +1,4 @@
-package app.model;
-
-import org.hibernate.annotations.DynamicUpdate;
-
-import javax.persistence.*;
-import java.io.Serializable;
+package app.dto;
 
 /**
  * Description goes here.
@@ -12,60 +7,16 @@ import java.io.Serializable;
  * @version 0.1
  * @since 15/10/2019
  */
+public class UsersDataDto {
 
-@Entity
-@Table(name = "USERS_DATA")
-@DynamicUpdate
-public class UsersData implements Serializable {
-
-    @Column
-    @Id
-    private String id;
-
-    @Column
     private String userName;
-
-    @Column
     private String userRating;
-
-    @Column
+    private String clubName;
     private String userEmail;
-
-    @Column
     private String userPhoneNumber;
-
-    @Column
     private String userAddress;
-
-    @Column
-    private String gender;
-
-    @Column
-    private int age;
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private String userGender;
+    private int userAge;
 
     public String getUserName() {
         return userName;
@@ -75,12 +26,36 @@ public class UsersData implements Serializable {
         this.userName = userName;
     }
 
+    public String getUserGender() {
+        return userGender;
+    }
+
+    public void setUserGender(String userGender) {
+        this.userGender = userGender;
+    }
+
+    public int getUserAge() {
+        return userAge;
+    }
+
+    public void setUserAge(int userAge) {
+        this.userAge = userAge;
+    }
+
     public String getUserRating() {
         return userRating;
     }
 
     public void setUserRating(String userRating) {
         this.userRating = userRating;
+    }
+
+    public String getClubName() {
+        return clubName;
+    }
+
+    public void setClubName(String clubName) {
+        this.clubName = clubName;
     }
 
     public String getUserEmail() {

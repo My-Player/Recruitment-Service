@@ -1,15 +1,17 @@
 package app.service.impl;
 
+import app.dto.ClubDto;
 import app.model.Club;
 import app.repository.ClubRepository;
 import app.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
- * Description goes here.
+ * service to maintain club stuff
  *
  * @author patrick.kwan
  * @version 0.1
@@ -20,7 +22,6 @@ public class ClubServiceImpl implements ClubService {
 
     private final ClubRepository clubRepository;
 
-    //at user's perspective
     @Autowired
     public ClubServiceImpl(ClubRepository clubRepository){
         this.clubRepository = clubRepository;
@@ -32,7 +33,20 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
-    public List<Club> getAllClubBasedOnClubCity(String clubCity) {
-        return  clubRepository.findClubByClubCity(clubCity);
+    public Club convertToClubAndSave(ClubDto clubDto) {
+        Club newClub = new Club();
+        newClub.setClubCity(clubDto.getClubCity());
+        newClub.setClublogo(clubDto.getLogo());
+        newClub.setClubName(clubDto.getClubName());
+        newClub.setClubAddress(clubDto.getClubAddress());
+        newClub.setCreatedDate(new Date());
+        newClub.setClubMembers(0);
+        clubRepository.save(newClub);
+        return newClub;
+    }
+
+    @Override
+    public Club getOne(String clubId){
+        return clubRepository.getOne(clubId);
     }
 }

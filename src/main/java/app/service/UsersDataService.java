@@ -1,7 +1,7 @@
 package app.service;
 
 import app.dto.UsersDataDto;
-import app.model.UsersData;
+import app.model.User;
 
 import java.util.List;
 
@@ -13,8 +13,10 @@ import java.util.List;
  * @since 15/10/2019
  */
 public interface UsersDataService {
+    User convertToUsersDataAndSave(UsersDataDto usersDataDto);
+    List<User> getAllUsersData();
 
-    UsersData save(UsersData usersData);
-    UsersData convertToUsersData(UsersDataDto usersDataDto);
-    List<UsersData> getAllUsersData();
+    User setUserClub(String user, String club);
+
+    List<User> getAllByClub(String clubId);
 }

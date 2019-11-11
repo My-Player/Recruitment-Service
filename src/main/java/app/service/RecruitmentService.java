@@ -16,5 +16,5 @@ public interface RecruitmentService {
     Recruitment saveRecruitment(Recruitment recruitment);
     Recruitment convertToRecruitment(RecruitmentDto recruitmentDto);
     List<Recruitment> getAllRecruitment();
-
+    List<Recruitment> getAllByClub(String clubId);
 }

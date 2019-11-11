@@ -1,6 +1,9 @@
 package app.model;
+
+import app.generator.StringPrefixedSequenceIdGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,12 +14,19 @@ import java.util.Date;
 @Table(name = "application")
 @DynamicUpdate
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-
 public class ApplicationInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name="application_info_id")
+    @Column(name = "application_info_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+    @GenericGenerator(
+            name = "book_seq",
+            strategy = "app.generator.StringPrefixedSequenceIdGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "AI"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")})
     private String applicationInfoId;
 
     @Column(name = "created_date")
@@ -25,13 +35,24 @@ public class ApplicationInfo implements Serializable {
     @Column(name = "recruitment_status")
     private String recruitmentStatus;
 
+    @Column(name = "joined_date")
+    private Date joinedDate;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "recruitment_id")
-    private Recruitment recruitment;
+    @JoinColumn(name = "club_id")
+    private Club club;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Date getJoinedDate() {
+        return joinedDate;
+    }
+
+    public void setJoinedDate(Date joinedDate) {
+        this.joinedDate = joinedDate;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -69,12 +90,11 @@ public class ApplicationInfo implements Serializable {
         this.user = user;
     }
 
-    public Recruitment getRecruitment() {
-        return recruitment;
+    public Club getClub() {
+        return club;
     }
 
-    public void setRecruitment(Recruitment recruitment) {
-        this.recruitment = recruitment;
+    public void setClub(Club club) {
+        this.club = club;
     }
-
 }
